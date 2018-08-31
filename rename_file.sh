@@ -1,14 +1,10 @@
 # 重命名当前文件夹下的文件名
 
-```
 #! /bin/bash
-
 ARGS=2
 ONE=1
-
 if [ $# -ne "$ARGS" ]
-then 
-   
+then  
 	echo "Usage : 'basename  $0' old-pattern new-pattern"
 	exit  2
 fi
@@ -29,7 +25,6 @@ then
 else
 	echo "$number files renamed."
 fi
-
 exit 0
 
 ```
