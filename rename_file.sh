@@ -26,5 +26,3 @@ else
 	echo "$number files renamed."
 fi
 exit 0
-
-```
