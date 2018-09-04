@@ -164,13 +164,13 @@ Linux系统中有着成千上万的文件，如果你想要找到自己想要的
         -name "文件名称"：支持使用glob
             *, ?, [], [^]
 
-[root@localhost test]# find /root -name f3 //查找/root目录下 文件名为f3
+## [root@localhost test]# find /root -name f3 //查找/root目录下 文件名为f3
 /root/f3
 /root/test/f3
-[root@localhost test]# find /root -name f? //查找时候最后使用“”将文件名引起，不然可能会出问题
+## [root@localhost test]# find /root -name f? //查找时候最后使用“”将文件名引起，不然可能会出问题
 find: paths must precede expression: f2
 Usage: find [-H] [-L] [-P] [-Olevel] [-D help|tree|search|stat|rates|opt|exec] [path...] [expression]
-[root@localhost test]# find /root -name "f?" //加上引号后可以查找出来，？代表任意单个字符
+## [root@localhost test]# find /root -name "f?" //加上引号后可以查找出来，？代表任意单个字符
 /root/f3
 /root/test/f3
 /root/test/f1
@@ -190,10 +190,10 @@ Usage: find [-H] [-L] [-P] [-Olevel] [-D help|tree|search|stat|rates|opt|exec] [
         -nouser：查找没有属主的文件
         -nogroup：查找没有属组的文件
 
-[root@localhost test]# find /var/ -user xiaoshui //查找/var/目录下属主为xiaoshui的文件或目录
+## [root@localhost test]# find /var/ -user xiaoshui //查找/var/目录下属主为xiaoshui的文件或目录
 /var/spool/mail/xiaoshui
-[root@localhost test]# find /tmp -group xiaoshui
-[root@localhost test]# find /var -nouser -ls //查找/var/目录下没有属主的文件的或目录
+## [root@localhost test]# find /tmp -group xiaoshui
+## [root@localhost test]# find /var -nouser -ls //查找/var/目录下没有属主的文件的或目录
 67109563    0 -rw-rw----   1 1002     mail            0 Jul 27 15:46 /var/spool/mail/shui
 67109834    0 -rw-rw----   1 1005     mail            0 Jul 30 15:54 /var/spool/mail/user1
 67109549    0 -rw-rw----   1 1006     mail            0 Aug  1 15:46 /var/spool/mail/gentoo
@@ -210,7 +210,7 @@ Usage: find [-H] [-L] [-P] [-Olevel] [-D help|tree|search|stat|rates|opt|exec] [
             p: 管道文件    
 
 
-[root@localhost test]# find -type f//查找当前目录下的普通文件
+## [root@localhost test]# find -type f//查找当前目录下的普通文件
 ./f3
 ./f1
 ./f2
@@ -223,7 +223,7 @@ Usage: find [-H] [-L] [-P] [-Olevel] [-D help|tree|search|stat|rates|opt|exec] [
             -#UNIT：[0,#-1], 如：-6k
             +#UNIT：(#,∞), 如：+6k
 
-[root@localhost test]# find -size -2k //查找当前目录下文件大小小与2k的文件
+## [root@localhost test]# find -size -2k //查找当前目录下文件大小小与2k的文件
 .
 ./f3
 ./f1
@@ -299,6 +299,7 @@ total 12
 124 //表示查找属主不是root，lp，gdm的文件或目录
 ## [root@localhost ~]# find /var -not -user root -not -user lp -not -user gdm|wc -l
 124//使用摩根定律即对属主不是root或lp，或gdm的去反。
+```
 处理动作
 
     -print：默认的处理动作，显示至屏幕；
@@ -310,6 +311,7 @@ total 12
 
     -exec COMMAND {} \; 对查找到的每个文件执行由COMMAND指定的命令
         {}: 用于引用查找到的文件名称自身
+ ```
 
 ## [root@localhost ~]# find -perm 640 -ls //对查找到的内容执行ls -l
 67444969    4 -rw-r-----   1 root     ssh_keys     1679 Jul 25 12:43 ./etc2016-08-11/ssh/ssh_host_rsa_key
@@ -323,5 +325,6 @@ total 12
 -rw---x--x 1 root root  6 Aug 15 17:50 f2
 -rwxrwxrwx 1 root root 25 Aug 15 21:41 f3
 ## [root@localhost test]# find -perm 644 -delete /对查找到的内容执行删除操作
+
 ## [root@localhost test]# ls //使用ls查看，确实删除了
 f1  f2  f3
