@@ -1,5 +1,3 @@
-#  grep能够快速的对文件进行搜索，命令和参数都比较好理解：
-
 ## grep [-acinv] [--color=auto] '搜寻字符串' filename
 
 选项与参数：
